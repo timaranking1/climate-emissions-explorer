@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: climate-emissions-explorer
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python init_db.py && gunicorn "app:create_app()"
