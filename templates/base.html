@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Climate Emissions Explorer{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1>Climate Emissions Explorer</h1>
+
+            <nav class="nav-links">
+                <a href="/">Home</a>
+                <a href="/countries">Countries</a>
+                <a href="/compare">Compare</a>
+                <a href="/about">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container page-content">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>Data source: Our World in Data CO₂ and Greenhouse Gas Emissions dataset.</p>
+        </div>
+    </footer>
+</body>
+</html>

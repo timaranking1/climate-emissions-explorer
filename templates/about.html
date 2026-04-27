@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}About - Climate Emissions Explorer{% endblock %}
+
+{% block content %}
+    <h2>About This Application</h2>
+
+    <p>
+        Climate Emissions Explorer is a Flask web application that uses open CO₂
+        emissions data to help users explore and compare country-level emissions.
+    </p>
+
+    <h3>Data Source</h3>
+
+    <p>
+        The data comes from the Our World in Data CO₂ and Greenhouse Gas Emissions
+        dataset. The original dataset contains more than 45,000 rows, but this
+        application uses a filtered subset of 5,000 records to meet the assessment
+        requirement of using between 2,000 and 7,000 records.
+    </p>
+
+    <h3>Database Design</h3>
+
+    <p>
+        The application stores the data in two linked database tables:
+    </p>
+
+    <ul>
+        <li><strong>Countries:</strong> stores country names and ISO codes.</li>
+        <li><strong>Emission Records:</strong> stores yearly CO₂, population, and GDP values.</li>
+    </ul>
+
+    <p>
+        Each country can have many emission records. This creates a one-to-many
+        relationship between the countries table and the emission records table.
+    </p>
+
+    <h3>Purpose</h3>
+
+    <p>
+        The purpose of the application is to demonstrate how open data can be loaded
+        into a relational database and displayed through a Flask web application.
+    </p>
+{% endblock %}

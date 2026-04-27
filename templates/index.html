@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Climate Emissions Explorer{% endblock %}
+
+{% block content %}
+    <h2>Welcome</h2>
+
+    <p>
+        This Flask application explores CO₂ emissions data from an open data source.
+        The data is stored in a SQLite database using two linked tables: countries
+        and emission records.
+    </p>
+
+    <div class="summary-boxes">
+        <div class="summary-box">
+            <span>Total Countries</span>
+            <strong>{{ country_count }}</strong>
+        </div>
+
+        <div class="summary-box">
+            <span>Total Emission Records</span>
+            <strong>{{ record_count }}</strong>
+        </div>
+    </div>
+
+    <h3>What can you do?</h3>
+
+    <ul>
+        <li>Browse countries included in the database.</li>
+        <li>View yearly CO₂ emission records for each country.</li>
+        <li>Compare two countries side by side for a selected year.</li>
+        <li>Understand how open data can be stored and displayed using Flask.</li>
+    </ul>
+
+    <p>
+        <a href="/countries">Start exploring countries</a>
+    </p>
+{% endblock %}

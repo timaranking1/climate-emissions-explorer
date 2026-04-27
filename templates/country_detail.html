@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}{{ country.name }} - Climate Emissions Explorer{% endblock %}
+
+{% block content %}
+    <h2>{{ country.name }}</h2>
+
+    {% if country.iso_code %}
+        <p>ISO code: {{ country.iso_code }}</p>
+    {% endif %}
+
+    <p>
+        This page shows yearly CO₂ emission records for {{ country.name }}.
+    </p>
+
+    {% if latest_record %}
+        <h3>Latest Available Record</h3>
+
+        <ul>
+            <li>Year: {{ latest_record.year }}</li>
+            <li>CO₂ emissions: {{ latest_record.co2 }}</li>
+            <li>CO₂ per capita: {{ latest_record.co2_per_capita }}</li>
+            <li>Population: {{ latest_record.population }}</li>
+            <li>GDP: {{ latest_record.gdp }}</li>
+        </ul>
+    {% endif %}
+
+    <h3>Yearly Records</h3>
+
+    {% if records %}
+        <table border="1" cellpadding="6">
+            <thead>
+                <tr>
+                    <th>Year</th>
+                    <th>CO₂</th>
+                    <th>CO₂ per capita</th>
+                    <th>Population</th>
+                    <th>GDP</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in records %}
+                    <tr>
+                        <td>{{ record.year }}</td>
+                        <td>{{ record.co2 }}</td>
+                        <td>{{ record.co2_per_capita }}</td>
+                        <td>{{ record.population }}</td>
+                        <td>{{ record.gdp }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No emission records found for this country.</p>
+    {% endif %}
+
+    <p>
+        <a href="/countries">Back to countries</a>
+    </p>
+{% endblock %}

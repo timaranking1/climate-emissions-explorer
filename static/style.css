@@ -1,0 +1,176 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7f6;
+    color: #222;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.site-header {
+    background: #173f35;
+    color: white;
+    padding: 24px 0;
+}
+
+.site-header h1 {
+    margin: 0 0 12px 0;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-right: 18px;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+.page-content {
+    background: white;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    padding: 28px;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.site-footer {
+    background: #173f35;
+    color: white;
+    padding: 16px 0;
+    font-size: 14px;
+}
+
+h2, h3, h4 {
+    color: #173f35;
+}
+
+a {
+    color: #176f5c;
+}
+
+a:hover {
+    color: #0f4d40;
+}
+
+form {
+    margin: 20px 0;
+    padding: 18px;
+    background: #eef5f3;
+    border-radius: 8px;
+}
+
+input,
+select,
+button {
+    padding: 9px;
+    margin-top: 6px;
+    font-size: 15px;
+}
+
+input,
+select {
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    min-width: 220px;
+}
+
+button {
+    background: #176f5c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0f4d40;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 18px;
+    font-size: 14px;
+}
+
+th {
+    background: #173f35;
+    color: white;
+    text-align: left;
+}
+
+th,
+td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+    background: #f6f6f6;
+}
+
+.summary-boxes {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.summary-box {
+    flex: 1;
+    min-width: 220px;
+    background: #eef5f3;
+    padding: 18px;
+    border-radius: 8px;
+    border-left: 5px solid #176f5c;
+}
+
+.summary-box strong {
+    display: block;
+    font-size: 28px;
+    color: #173f35;
+}
+
+.country-list {
+    columns: 2;
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.country-list li {
+    margin-bottom: 8px;
+}
+
+.message {
+    background: #fff8df;
+    border-left: 5px solid #d6a800;
+    padding: 12px;
+    border-radius: 6px;
+}
+
+@media (max-width: 700px) {
+    .country-list {
+        columns: 1;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    .page-content {
+        padding: 18px;
+    }
+}

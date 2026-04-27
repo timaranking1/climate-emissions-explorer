@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block title %}Compare Countries - Climate Emissions Explorer{% endblock %}
+
+{% block content %}
+    <h2>Compare Countries</h2>
+
+    <p>
+        Select two countries and a year to compare their CO₂ emissions side by side.
+    </p>
+
+    <form method="get" action="/compare">
+        <label for="country1">First country:</label>
+        <select name="country1" id="country1" required>
+            <option value="">Choose a country</option>
+            {% for country in countries %}
+                <option value="{{ country.id }}"
+                    {% if selected_country1 == country.id %}selected{% endif %}>
+                    {{ country.name }}
+                </option>
+            {% endfor %}
+        </select>
+
+        <br><br>
+
+        <label for="country2">Second country:</label>
+        <select name="country2" id="country2" required>
+            <option value="">Choose a country</option>
+            {% for country in countries %}
+                <option value="{{ country.id }}"
+                    {% if selected_country2 == country.id %}selected{% endif %}>
+                    {{ country.name }}
+                </option>
+            {% endfor %}
+        </select>
+
+        <br><br>
+
+        <label for="year">Year:</label>
+        <select name="year" id="year" required>
+            <option value="">Choose a year</option>
+            {% for year in years %}
+                <option value="{{ year }}"
+                    {% if selected_year == year %}selected{% endif %}>
+                    {{ year }}
+                </option>
+            {% endfor %}
+        </select>
+
+        <br><br>
+
+        <button type="submit">Compare</button>
+    </form>
+
+    {% if selected_country1 and selected_country2 and selected_year %}
+        <hr>
+
+        <h3>Comparison for {{ selected_year }}</h3>
+
+        {% if record1 and record2 %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Country</th>
+                        <th>CO₂ emissions</th>
+                        <th>CO₂ per capita</th>
+                        <th>Population</th>
+                        <th>GDP</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>{{ country1.name }}</td>
+                        <td>{{ record1.co2 }}</td>
+                        <td>{{ record1.co2_per_capita }}</td>
+                        <td>{{ record1.population }}</td>
+                        <td>{{ record1.gdp }}</td>
+                    </tr>
+
+                    <tr>
+                        <td>{{ country2.name }}</td>
+                        <td>{{ record2.co2 }}</td>
+                        <td>{{ record2.co2_per_capita }}</td>
+                        <td>{{ record2.population }}</td>
+                        <td>{{ record2.gdp }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            {% if difference is not none %}
+                <h4>CO₂ Difference</h4>
+
+                <p>
+                    The difference in CO₂ emissions between
+                    <strong>{{ country1.name }}</strong> and
+                    <strong>{{ country2.name }}</strong> in
+                    <strong>{{ selected_year }}</strong> was
+                    <strong>{{ difference }}</strong>.
+                </p>
+            {% endif %}
+
+        {% else %}
+            <p class="message">
+                Sorry, one or both countries do not have data for the selected year.
+                Try choosing a different year.
+            </p>
+        {% endif %}
+    {% endif %}
+{% endblock %}

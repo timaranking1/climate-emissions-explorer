@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Countries - Climate Emissions Explorer{% endblock %}
+
+{% block content %}
+    <h2>Countries</h2>
+
+    <p>
+        Select a country to view its yearly CO₂ emission records.
+    </p>
+
+    <form method="get" action="/countries">
+        <label for="search">Search for a country:</label>
+
+        <input
+            type="text"
+            id="search"
+            name="search"
+            value="{{ search }}"
+            placeholder="Example: Nigeria"
+        >
+
+        <button type="submit">Search</button>
+    </form>
+
+    {% if search %}
+        <p>
+            Search results for: <strong>{{ search }}</strong>
+        </p>
+
+        <p>
+            <a href="/countries">Clear search</a>
+        </p>
+    {% endif %}
+
+    {% if countries %}
+        <ul class="country-list">
+            {% for country in countries %}
+                <li>
+                    <a href="/country/{{ country.id }}">
+                        {{ country.name }}
+                    </a>
+
+                    {% if country.iso_code %}
+                        <small>({{ country.iso_code }})</small>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="message">No countries found.</p>
+    {% endif %}
+{% endblock %}
