@@ -1,1 +1,3 @@
+* 93f0e64 : Add project README documentation
+* 9a2622d : Add git log for assessment submission
 * 262761b : Initial Flask climate emissions app setup
