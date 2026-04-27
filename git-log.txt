@@ -1,3 +1,5 @@
+* e464768 : Remove Mac system file from repository
+* a3960f5 : Update git log after documentation changes
 * 93f0e64 : Add project README documentation
 * 9a2622d : Add git log for assessment submission
 * 262761b : Initial Flask climate emissions app setup
